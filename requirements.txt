@@ -1,0 +1,9 @@
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.5.0
+pytest>=7.4.0
+httpx>=0.25.0
+
+# Optional: only needed for LLM-powered reasoning (Layer 2)
+# Without this, the AgentService uses a rule-based fallback
+openai>=1.6.0

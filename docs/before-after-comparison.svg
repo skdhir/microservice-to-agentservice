@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#888"/>
+    </marker>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="480" rx="12" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <rect x="20" y="12" width="860" height="40" rx="8" fill="url(#hdr)" filter="url(#sh)"/>
+  <text x="450" y="38" text-anchor="middle" fill="white" font-size="17" font-weight="700">Microservice vs AgentService — Side by Side</text>
+
+  <!-- Divider -->
+  <line x1="450" y1="70" x2="450" y2="465" stroke="#ddd" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- ==================== LEFT: MICROSERVICE ==================== -->
+  <text x="225" y="80" text-anchor="middle" fill="#555" font-size="15" font-weight="700">PricingService (Before)</text>
+  <text x="225" y="96" text-anchor="middle" fill="#999" font-size="11">Deterministic. Stateless. Rigid.</text>
+
+  <!-- Request -->
+  <rect x="115" y="112" width="220" height="30" rx="6" fill="#e8e8e8" filter="url(#sh)"/>
+  <text x="225" y="132" text-anchor="middle" fill="#444" font-size="11" font-weight="600">GET /price/WIDGET-PRO</text>
+  <line x1="225" y1="142" x2="225" y2="162" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Endpoint -->
+  <rect x="95" y="165" width="260" height="36" rx="6" fill="#2c3e50" filter="url(#sh)"/>
+  <text x="225" y="188" text-anchor="middle" fill="white" font-size="12" font-weight="600">Endpoint (route handler)</text>
+  <line x1="225" y1="201" x2="225" y2="221" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Logic -->
+  <rect x="95" y="224" width="260" height="36" rx="6" fill="#34495e" filter="url(#sh)"/>
+  <text x="225" y="247" text-anchor="middle" fill="white" font-size="12" font-weight="600">Deterministic Logic (dict lookup)</text>
+  <line x1="225" y1="260" x2="225" y2="280" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Response -->
+  <rect x="95" y="283" width="260" height="50" rx="6" fill="#e8e8e8" filter="url(#sh)"/>
+  <text x="225" y="303" text-anchor="middle" fill="#444" font-size="11" font-weight="600">Response</text>
+  <text x="225" y="322" text-anchor="middle" fill="#777" font-size="10">{ price: 99.99, currency: "USD" }</text>
+
+  <!-- Limitations -->
+  <rect x="65" y="350" width="320" height="110" rx="6" fill="#fff3f3" stroke="#e74c3c" stroke-width="1" filter="url(#sh)"/>
+  <text x="225" y="372" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="700">What It Can't Do</text>
+  <text x="85" y="392" fill="#888" font-size="10">&#x2717; No customer history awareness</text>
+  <text x="85" y="407" fill="#888" font-size="10">&#x2717; No competitor pricing analysis</text>
+  <text x="85" y="422" fill="#888" font-size="10">&#x2717; No margin optimization</text>
+  <text x="85" y="437" fill="#888" font-size="10">&#x2717; No reasoning or explanation</text>
+  <text x="85" y="452" fill="#888" font-size="10">&#x2717; No memory of past interactions</text>
+
+  <!-- ==================== RIGHT: AGENTSERVICE ==================== -->
+  <text x="675" y="80" text-anchor="middle" fill="#555" font-size="15" font-weight="700">PricingAgent (After)</text>
+  <text x="675" y="96" text-anchor="middle" fill="#999" font-size="11">Goal-oriented. Context-aware. Guardrailed.</text>
+
+  <!-- Request -->
+  <rect x="530" y="112" width="290" height="30" rx="6" fill="#e8f4fd" filter="url(#sh)"/>
+  <text x="675" y="132" text-anchor="middle" fill="#1a5276" font-size="11" font-weight="600">POST /pricing/evaluate { goal: "..." }</text>
+  <line x1="675" y1="142" x2="675" y2="158" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Layer 1 -->
+  <rect x="530" y="161" width="290" height="26" rx="5" fill="#0f3460" filter="url(#sh)"/>
+  <text x="545" y="179" fill="#e8d44d" font-size="9" font-weight="700">L1</text>
+  <text x="570" y="179" fill="white" font-size="10" font-weight="600">Goal Interface</text>
+  <line x1="675" y1="187" x2="675" y2="195" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Layer 4 (context gather) -->
+  <rect x="600" y="198" width="170" height="22" rx="5" fill="#2e86c1" filter="url(#sh)"/>
+  <text x="615" y="213" fill="#e8d44d" font-size="9" font-weight="700">L4</text>
+  <text x="640" y="213" fill="white" font-size="9">Gather memory context</text>
+  <line x1="675" y1="220" x2="675" y2="228" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Layer 2 -->
+  <rect x="530" y="231" width="290" height="56" rx="5" fill="#1b4f72" filter="url(#sh)"/>
+  <text x="545" y="249" fill="#e8d44d" font-size="9" font-weight="700">L2</text>
+  <text x="570" y="249" fill="white" font-size="10" font-weight="600">Reasoning Engine</text>
+  <rect x="545" y="257" width="260" height="22" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="560" y="272" fill="#aac" font-size="8.5">Think &#8594; Call tool (L3) &#8594; Interpret &#8594; Repeat or synthesize</text>
+
+  <!-- Two-way arrows to L3 -->
+  <line x1="620" y1="287" x2="620" y2="300" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="730" y1="300" x2="730" y2="287" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Layer 3 -->
+  <rect x="530" y="303" width="170" height="40" rx="5" fill="#2471a3" filter="url(#sh)"/>
+  <text x="545" y="320" fill="#e8d44d" font-size="9" font-weight="700">L3</text>
+  <text x="570" y="320" fill="white" font-size="10" font-weight="600">Tool Registry</text>
+  <text x="548" y="336" fill="#9bc" font-size="8">6 tools wrapping business logic</text>
+
+  <!-- Layer 4 (memory, beside L3) -->
+  <rect x="710" y="303" width="110" height="40" rx="5" fill="#3498db" filter="url(#sh)"/>
+  <text x="720" y="320" fill="#e8d44d" font-size="9" font-weight="700">L4</text>
+  <text x="740" y="320" fill="white" font-size="9" font-weight="600">Memory</text>
+  <text x="720" y="336" fill="#bde" font-size="8">Log decision</text>
+
+  <line x1="675" y1="343" x2="675" y2="356" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Layer 5 -->
+  <rect x="530" y="359" width="290" height="26" rx="5" fill="#c0392b" filter="url(#sh)"/>
+  <text x="545" y="377" fill="#f9e654" font-size="9" font-weight="700">L5</text>
+  <text x="570" y="377" fill="white" font-size="10" font-weight="600">Safety Boundaries</text>
+  <text x="740" y="377" fill="#fcc" font-size="8">validate before sending</text>
+  <line x1="675" y1="385" x2="675" y2="400" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Response -->
+  <rect x="505" y="403" width="340" height="62" rx="6" fill="#e8f4fd" filter="url(#sh)"/>
+  <text x="675" y="420" text-anchor="middle" fill="#1a5276" font-size="11" font-weight="600">Response</text>
+  <text x="520" y="436" fill="#555" font-size="9">price: $84.99 | reasoning: "Applied 15% loyalty..."</text>
+  <text x="520" y="450" fill="#555" font-size="9">tools: [4 used] | confidence: 0.87 | trajectory: [...]</text>
+
+  <!-- Green checkmarks -->
+  <text x="860" y="422" fill="#27ae60" font-size="10">&#x2713; Explainable</text>
+  <text x="860" y="437" fill="#27ae60" font-size="10">&#x2713; Context-aware</text>
+  <text x="860" y="452" fill="#27ae60" font-size="10">&#x2713; Guardrailed</text>
+</svg>
